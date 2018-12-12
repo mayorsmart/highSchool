@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<body th:fragment="sidebar" >
+
+<nav class="ts-sidebar">
+    <ul class="ts-sidebar-menu">
+
+
+        <li><a href="dashboard.php"><i class="fa fa-desktop"></i>Dashboard</a></li>
+        <li><a href="my-profile.php"><i class="fa fa-user"></i> My Profile</a></li>
+        <li><a href="change-password.php"><i class="fa fa-files-o"></i>Change Password</a></li>
+        <li><a href="book-hostel.php"><i class="fa fa-file-o"></i>HND Library</a></li>
+        <li><a href="room-details.php"><i class="fa fa-file-o"></i>ND Library</a></li>
+        <li><a href="access-log.php"><i class="fa fa-file-o"></i>Access log</a></li>
+        <?php } else { ?>
+
+        <li><a href="registration.php"><i class="fa fa-files-o"></i> User Registration</a></li>
+        <li><a href="index.php"><i class="fa fa-users"></i> User Login</a></li>
+        <li><a href="admin"><i class="fa fa-user"></i> Admin Login</a></li>
+
+
+    </ul>
+</nav>
+
+</body>
+</html>
+
+

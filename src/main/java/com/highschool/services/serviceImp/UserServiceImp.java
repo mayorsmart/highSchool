@@ -2,13 +2,16 @@ package com.highschool.services.serviceImp;
 
 import com.highschool.dao.RoleRepository;
 import com.highschool.dao.UserRepository;
+import com.highschool.entity.Code;
 import com.highschool.entity.Role;
 import com.highschool.entity.User;
+import com.highschool.services.CodeService;
 import com.highschool.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -19,7 +22,8 @@ PasswordEncoder passwordEncoder;
     private UserRepository userRepository;
     @Autowired
     private RoleRepository roleRepository;
-
+    @Autowired
+    private CodeService codeService;
 
 
     public void save(User user) {
@@ -31,19 +35,45 @@ PasswordEncoder passwordEncoder;
             role.setEmail(user.getEmail());
             role.setAuthority("ROLE_UNAUTH");
             role.setUser(user);
-
             // create user first
             userRepository.save(user);
 
+
+            user.setEnabled(true);
+            userRepository.save(user);
             // save role
             roleRepository.save(role);
-             }
+            // generate active code
+            Code code = new Code();
+            code.setCodeDate(new Date());
+            code.setCodeType(0);
+            code.setUser(user);
 
+            codeService.save(code);
+        }else{
+            userRepository.save(user);
+        }
+    }
+
+    public void activeAccount(String codeStr){
+        Code code = codeService.findByCodeStr(codeStr);
+        if(code != null){
+            User user = code.getUser();
+            Role role = new Role();
+            role.setAuthority("ROLE_USER");
+            role.setUser(user);
+            role.setEmail(user.getEmail());
+            roleRepository.save(role);
+            // delete role UNAUTH
+            roleRepository.delete(roleRepository.findByAuthorityAndUser("ROLE_UNAUTH", user));
+            // delete active code
+            codeService.delete(code);
+        }
     }
 
     @Override
-    public User findOneById(Long userId) {
-        return userRepository.findOneById(userId);
+    public User findOneByUserId(Long userId) {
+        return userRepository.findOneByUserId(userId);
     }
 
     public User findByEmail(String email){
@@ -63,7 +93,7 @@ PasswordEncoder passwordEncoder;
 
     @Override
     public void delete(Long userId) {
-        userRepository.deleteById(userId);
+        userRepository.deleteByUserId(userId);
 
     }
 

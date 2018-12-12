@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <head th:fragment="head">
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Registration</title>
+    <link rel="stylesheet" href="/css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}" >
+    <link rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="css/dataTables.bootstrap.min.css" th:href="@{/css/dataTables.bootstrap.min.css}">
+    <link rel="stylesheet" href="css/bootstrap-social.css"  th:href="@{/css/bootstrap-social.css}">
+    <link rel="stylesheet" href="css/bootstrap-select.css" th:href="@{/css/bootstrap-select.css}">
+    <link rel="stylesheet" href="css/fileinput.min.css" th:href="@{/css/fileinput.min.css}">
+    <link rel="stylesheet" href=".css/awesome-bootstrap-checkbox.css" th:href="@{/css/awesome-bootstrap-checkbox.css}">
+    <link rel="stylesheet" href="..css/style.css"th:href="@{/css/style.css}"/>
+    <script type="text/javascript" src="..js/jquery-1.11.3-jquery.min.js" th:src="@{/js/jquery-1.11.3-jquery.min.js}"></script>
+    <script type="text/javascript" src="..js/validation.min.js"th:src="@{/js/validation.min.js}"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+</head>
+
+<div class="brand clearfix">
+    <a href="#" class="logo" style="font-size:16px;">Secondary School Online Study System</a>
+    <span class="menu-btn"><i class="fa fa-bars"></i></span>
+    <ul class="ts-profile-nav">
+        <li class="ts-account">
+            <a href="#"><img src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt=""> Account <i class="fa fa-angle-down hidden-side"></i></a>
+            <ul>
+                <li><a href="">My Account</a></li>
+                <li><a href="">Logout</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div class="page-header">
+    <h1><span th:text="${header}">Page Header</span> <small th:text="${subtext}">Subtext</small></h1>
+</div>
+
+
+</html>
+
+

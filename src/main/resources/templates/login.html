@@ -1,0 +1,80 @@
+
+      <!DOCTYPE html>
+      <html lang="en" xmln="http://wwww.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+            xmlns="http://www.w3.org/1999/html">
+
+
+          <head th:replace="fragments/header::head"></head>
+
+      <body>
+
+
+
+      <div class="ts-main-content">
+
+          <nav th:replace="fragments/sidebar :: sidebar" class="navbar-default navbar-static-side" role="navigation"></nav>
+          <div class="content-wrapper">
+              <div class="container-fluid">
+
+                  <div class="row">
+                      <div class="col-md-12">
+
+                          <h2 class="page-title">User Login </h2>
+
+
+                          <div class="row">
+                              <div class="col-md-6 col-md-offset-3">
+                                  <div class="well row pt-2x pb-3x bk-light">
+                                      <div class="col-md-8 col-md-offset-2">
+
+                                          <div th:if="${param.error}">
+                                              Invalid username and password.
+                                          </div>
+
+                                          <div th:if="${param.logout}">
+                                              You have been logged out.
+                                          </div>
+
+                                          <form role="form" th:action="@{/login}"  class="mt" method="post">
+
+                                              <label for="username" class="text-uppercase text-sm">USERNAME</label>
+
+                                              <input type="email" placeholder="UserName" id="username" name="username" class="form-control mb">
+
+                                              <label for="password" class="text-uppercase text-sm">PASSWORD</label>
+
+                                              <input type="password" placeholder="Password" id="password" name="password" class="form-control mb">
+
+                                              <a href="#" class=" block  m-b"> Forgot Password? Click here</a>
+                                              <button type="submit" name="login" class="btn btn-primary btn-block">Login</button>
+                                              <a href="/register" class="btn btn-primary  m-b">Create an account</a>
+
+                                          </form>
+                                          <a href="/" class=" block  m-b"> Return to website</a>
+                                      </div>
+                                  </div>
+                                  <div class="text-center text-light">
+                                      <a href="#" class="text-light">Forgot password?</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      <script src="js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+      <script src="js/bootstrap-select.min.js" th:src="@{/js/bootstrap-select.min.js}"></script>
+      <script src="js/bootstrap.min.js"th:src="@{/js/bootstrap.min.js}"></script>
+      <script src="js/jquery.dataTables.min.js"th:src="@{/js/jquery.dataTables.min.js}"></script>
+      <script src="js/dataTables.bootstrap.min.js"th:src="@{/js/dataTables.bootstrap.min.js}"></script>
+      <script src="js/Chart.min.js"th:src="@{/js/Chart.min.js}"></script>
+      <script src="js/fileinput.js"th:src="@{/js/fileinput.js}"></script>
+      <script src="js/chartData.js" th:src="@{/js/chartData.js}"></script>
+      <script src="js/main.js"th:src="@{/js/main.js}"></script>
+      </body>
+
+      </html>

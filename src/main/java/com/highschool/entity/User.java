@@ -37,5 +37,8 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user")
     private List<Role> roles;
 
+    @OneToMany(mappedBy = "user")
+    private List<Code> codes;
+
     private boolean enabled;
 }
